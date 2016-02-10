@@ -14,7 +14,7 @@ public class Cinema {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+   /*public static void main(String[] args) {
         Sala_Cinema sala1 = new Sala_Cinema("Star Wars Episode VII",20,4,4);
         sala1.inicializar_sala();
         //System.out.println(sala1.num_fileiras+" "+sala1.num_cadeiras_fileira);
@@ -24,6 +24,6 @@ public class Cinema {
         //sala1.retirar_reserva(2,3);
         sala1.mostra_cadeiras();
         sala1.info_sala();
-    }
+    }*/
     
 }
