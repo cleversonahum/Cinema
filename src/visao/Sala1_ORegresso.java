@@ -1,70 +1,87 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package cinema;
 
+package visao;
+import controle.Cliente;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author cleversonahum
  */
-public class Sala_Cinema extends javax.swing.JFrame {
+public class Sala1_ORegresso extends javax.swing.JFrame implements Cliente{
     
     //Antiga Classe Cinema
-    
-    private String filme;
+    Object Sessao;
+    int Verifica;
+    private String nomeCliente,Email,telefoneCliente;
+    private String filme = "O Regresso - Dublado.";
     private int sessao, num_fileiras=4, num_cadeiras_fileira=5, assentos_disponiveis = 20, total_assentos;
     private boolean estaReservada[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
     
     
     
     //Construtor da classe Sala_Cinema
-    Sala_Cinema(String filme, int sessao) {
+    Sala1_ORegresso(String filme, int sessao) {
         this.filme = filme;
         this.sessao = sessao;
     }
     //Fim Construtor
     
     //Métodos Set
-    void setFilme(String filme) { //definir filme
+    public void setFilme(String filme) { //definir filme
         this.filme = filme;
     }
     
-    void setSessao(int sessao) { //definir Sessao
+    public void setSessao(int sessao) { //definir Sessao
         this.sessao = sessao;
     }
     
-    void setNumFileiras(int num_fileiras) { //Definir numero de fileiras
+    public void setNumFileiras(int num_fileiras) { //Definir numero de fileiras
         this.num_fileiras = num_fileiras;
     }
     
-    void setNumCadeirasFileira(int num_cadeiras_fileira) {
+    public void setNumCadeirasFileira(int num_cadeiras_fileira) {
         this.num_cadeiras_fileira = num_cadeiras_fileira;
+    }
+    public void setNomeCliente(String NomeCliente){
+        this.nomeCliente = NomeCliente;
+    }
+    public void setTelefone(String telefone){
+        this.telefoneCliente = telefone;
+    }
+    public void setemailCliente(String email){
+        this.Email = email;
     }
     //Fim metodos Set
     
     //Metodos Get
-    String getFilme(){ //Acessar filme
+    public String getFilme(){ //Acessar filme
         return this.filme;
     }
     
-    int getSessao() {
+    public int getSessao() {
         return this.sessao;
     }
     
-    int getNumFileiras() {
+    public int getNumFileiras() {
         return this.num_fileiras;
     }
     
-    int getNumCadeirasFileira() {
+    public int getNumCadeirasFileira() {
         return this.num_cadeiras_fileira;
     }
     
-    int getAssentosDisponiveis() {
+    public int getAssentosDisponiveis() {
         return this.assentos_disponiveis;
+    }
+    public String getNomeCliente(){
+        return this.nomeCliente;
+    }
+    public String getEmailCliente(){
+        return this.Email;
+    }
+    public String getTelefoneCliente(){
+        return this.telefoneCliente;
     }
     
     //Fim métodos Get
@@ -139,8 +156,10 @@ public class Sala_Cinema extends javax.swing.JFrame {
         System.out.println("Filme : "+this.filme+"\nSessão : "+this.sessao+"\nTotal de Assentos : "+total_assentos()+"\nAssentos Ocupados : "+ quant_pessoas_sala()+"\nAssentos Vazios : "+this.assentos_disponiveis);
     }
     
+    
     void reservar_desmarcar_assento(javax.swing.JTextField x, int num_assento, int num_fila, int num_fila_assento) {
         //Se a cadeira estiver reservada, desmarca a reserva
+        
         if(this.estaReservada[num_assento]) {
             x.setBackground(Color.GREEN); //Deixa a cadeira disponivel (verde)
             this.estaReservada[num_assento] = false; //Retira a reserva da matriz
@@ -148,17 +167,24 @@ public class Sala_Cinema extends javax.swing.JFrame {
             this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
             System.out.println(this.assentos_disponiveis);
             System.out.println(this.total_assentos());
-            
             //Atualizando valores das caixas de texto na Interface
             cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
             cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
             cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));
-            
-            
+
         }
         else {
             x.setBackground(Color.red);//Deixa a cadeira indisponivel (vermelho)
             this.estaReservada[num_assento] = true; //reserva o assento da matriz
+            //Pede Informações do Cliente ao Solicitar assento.
+            String[] opcoes = {"13:40","17:30"};
+            //Vai escolher uma das sessoes.
+            Sessao = JOptionPane.showInputDialog(null,"Qual a Sessão Desejada?","Escolha",JOptionPane.QUESTION_MESSAGE,null,opcoes,null);
+            if(Sessao == "13:40"){
+            //Chama o método pegaDadosCliente Para Solicitar seus Dados.
+            pegaDadosCliene();
+            //exibe informanções
+            info_cliente();
             this.reservar_assento(num_fila,num_fila_assento); //reserva o assento escolhido
             this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
             System.out.println(this.assentos_disponiveis);
@@ -168,18 +194,51 @@ public class Sala_Cinema extends javax.swing.JFrame {
             cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
             cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
             cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));
+        }else if (Sessao == "17:30"){
+            //Chama o método pegaDadosCliente Para Solicitar seus Dados.
+            pegaDadosCliene();
+            //exibe informações do cliente
+            info_cliente();
+            this.reservar_assento(num_fila,num_fila_assento); //reserva o assento escolhido
+            this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
+            System.out.println(this.assentos_disponiveis);
+            System.out.println(this.total_assentos());
+            
+            //Atualizando valores das caixas de texto na Interface
+            cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
+            cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
+            cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));
+            }
         }
+       
     }
+    // Implementando O Método pegaDadosCliente.
+    @Override
+    public void pegaDadosCliene() {
+        do{
+        nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: ");
+        Email= JOptionPane.showInputDialog("Informe o Email do Cliente: ");
+        telefoneCliente = JOptionPane.showInputDialog("Informe um Telefone Para Contato: ");
+        }while((nomeCliente==null||nomeCliente.equals("")));
+    }
+    //Fim da Implementação do Método pegaDadosCliente.
     
+    //Exibe as Informações para verificar se está tudo correto
+    void info_cliente(){
+        JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nSessao: "+Sessao+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
+            "\nEmail: "+Email+"\nDeseja Emitir Este Ingresso ? ");
+            if(Verifica == JOptionPane.YES_OPTION){
+                JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");
+            }else{
+                System.exit(0);
+            }
+    }
     //Fim antiga classe cinema
 
-    /**
-     * Creates new form Sala_Cinema
-     */
-    public Sala_Cinema() {
+    //Criação da Interce(JFrama)
+    public Sala1_ORegresso() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,7 +247,7 @@ public class Sala_Cinema extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        
         a1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -216,7 +275,7 @@ public class Sala_Cinema extends javax.swing.JFrame {
         d4 = new javax.swing.JTextField();
         d5 = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.Color.gray);
 
         a1.setEditable(false);
@@ -576,7 +635,8 @@ public class Sala_Cinema extends javax.swing.JFrame {
     
     //Assento A1 (0)
     private void a1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a1MouseClicked
-        this.reservar_desmarcar_assento(a1, 1, 0, 0); 
+        this.reservar_desmarcar_assento(a1, 1, 0, 0);
+        
     }//GEN-LAST:event_a1MouseClicked
 
     
@@ -692,22 +752,11 @@ public class Sala_Cinema extends javax.swing.JFrame {
     private void d5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d5MouseClicked
         this.reservar_desmarcar_assento(d5, 19, 3, 4); 
     }//GEN-LAST:event_d5MouseClicked
+
     
-    
-    
-    
-    
-    /**
-     * @param args the command line arguments
-     */
+   //Método Main da Classe Sala1_Oregresso
     public static void main(String args[]) {
-        Sala_Cinema sala1 = new Sala_Cinema("Star Wars Episode VII",20);
-        sala1.inicializar_sala();
-        
-        sala1.reservar_assento(0, 1);
-        sala1.retirar_reserva(0, 1);
-        System.out.println(sala1.assentos_disponiveis);
-        /* Set the Nimbus look and feel */
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -720,20 +769,21 @@ public class Sala_Cinema extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Sala_Cinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sala1_ORegresso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Sala_Cinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sala1_ORegresso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Sala_Cinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sala1_ORegresso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Sala_Cinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Sala1_ORegresso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Sala_Cinema().setVisible(true);
+                new Sala1_ORegresso().setVisible(true);
             }
         });
     }
@@ -766,4 +816,6 @@ public class Sala_Cinema extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+    
 }
