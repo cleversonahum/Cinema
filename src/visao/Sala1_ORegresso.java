@@ -2,14 +2,16 @@
 package visao;
 import controle.Cliente;
 import java.awt.Color;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 /**
  *
  * @author cleversonahum
  */
 public class Sala1_ORegresso extends javax.swing.JFrame implements Cliente{
-    
+
     //Antiga Classe Cinema
     Object Sessao;
     int Verifica;
@@ -225,12 +227,12 @@ public class Sala1_ORegresso extends javax.swing.JFrame implements Cliente{
     
     //Exibe as Informações para verificar se está tudo correto
     void info_cliente(){
-        JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nSessao: "+Sessao+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
+        Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nSessao: "+Sessao+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
             "\nEmail: "+Email+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");
             }else{
-                System.exit(0);
+                setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             }
     }
     //Fim antiga classe cinema
