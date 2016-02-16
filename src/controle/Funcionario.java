@@ -18,12 +18,17 @@ public class Funcionario {
             else{
                 char[] array = this.nome.toCharArray();
                 for(int i=0;i<array.length;i++){
-                    sentinela = !Character.isDigit(array[i]);
+                    if(Character.isDigit(array[i]) == true){
+                        sentinela = false;
+                        break;
+                    }
+                    else{
+                        sentinela =true;
+                    }
                 }
            
             }
         }
-        
 //        do{
 //        this.nome = JOptionPane.showInputDialog("Vendedor, Informe seu nome: ");
 //        }while(this.nome.equals("")||this.nome==null);
