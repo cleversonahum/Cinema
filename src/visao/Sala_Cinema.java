@@ -142,6 +142,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     
     public void reservar_desmarcar_assento(javax.swing.JTextField x, int num_fila, int num_fila_assento) {
         //Se a cadeira estiver reservada, desmarca a reserva
+        boolean ingressoEmitido;
         
         if(this.assentos[num_fila][num_fila_assento]==1) {
             x.setBackground(Color.GREEN); //Deixa a cadeira disponivel (verde)
@@ -156,22 +157,26 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
 
         }
         else {
-            x.setBackground(Color.red);//Deixa a cadeira indisponivel (vermelho)
             //Pede Informações do Cliente ao Solicitar assento.
             //Chama o método pegaDadosCliente Para Solicitar seus Dados.
             pegaDadosCliente();
             //exibe informanções
-            info_cliente();
-            this.reservar_assento(num_fila,num_fila_assento); //reserva o assento escolhido
-            this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
-            System.out.println(this.assentos_disponiveis);
-            System.out.println(this.total_assentos());
+            ingressoEmitido = info_cliente();
             
-            //Atualizando valores das caixas de texto na Interface
-            cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
-            cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
-            cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));  
-    }
+            if(ingressoEmitido) {
+                x.setBackground(Color.red);//Deixa a cadeira indisponivel (vermelho)
+            
+                this.reservar_assento(num_fila,num_fila_assento); //reserva o assento escolhido
+                this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
+                System.out.println(this.assentos_disponiveis);
+                System.out.println(this.total_assentos());
+            
+                //Atualizando valores das caixas de texto na Interface
+                cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
+                cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
+                cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));  
+            }
+        }
     }
     //Implementandi O Metodo da Classe Interface Cliente.
     @Override
@@ -190,14 +195,16 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     //Fim da Implementação do Método pegaDadosCliente.
     
     //Exibe as Informações para verificar se está tudo correto
-    public void info_cliente(){
+    public boolean info_cliente(){
         int Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
             "\nEmail: "+Email+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");
+                return true;
             }else{
                 setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 //fecha a janela de questionario de coonfirmação de emissao do ingresso.
+                return false;
             }
     }
     //Fim antiga classe cinema
