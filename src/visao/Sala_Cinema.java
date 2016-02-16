@@ -1,9 +1,4 @@
 package visao;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
 import controle.Cliente;
 import controle.Funcionario;
 import java.awt.Color;
@@ -25,7 +20,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     private String nomeCliente,Email,telefoneCliente;
     private String filme;
     private int sessao, num_fileiras=4, num_cadeiras_fileira=5, assentos_disponiveis = 20, total_assentos;
-    private boolean estaReservada[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false};
+  
     
     
     
@@ -166,12 +161,11 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     }
     
     
-    public void reservar_desmarcar_assento(javax.swing.JTextField x, int num_assento, int num_fila, int num_fila_assento) {
+    public void reservar_desmarcar_assento(javax.swing.JTextField x, int num_fila, int num_fila_assento) {
         //Se a cadeira estiver reservada, desmarca a reserva
         
-        if(this.estaReservada[num_assento]) {
+        if(this.assentos[num_fila][num_fila_assento]==1) {
             x.setBackground(Color.GREEN); //Deixa a cadeira disponivel (verde)
-            this.estaReservada[num_assento] = false; //Retira a reserva da matriz
             this.retirar_reserva(num_fila,num_fila_assento); //Retira a reserva o assento escolhido
             this.mostra_cadeiras(); //Mostra a diposição das cadeiras no terminal
             System.out.println(this.assentos_disponiveis);
@@ -184,7 +178,6 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         }
         else {
             x.setBackground(Color.red);//Deixa a cadeira indisponivel (vermelho)
-            this.estaReservada[num_assento] = true; //reserva o assento da matriz
             //Pede Informações do Cliente ao Solicitar assento.
             //Chama o método pegaDadosCliente Para Solicitar seus Dados.
             pegaDadosCliene();
@@ -629,122 +622,122 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     
     //Assento A1 (0)
     private void a1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a1MouseClicked
-        this.reservar_desmarcar_assento(a1, 1, 0, 0);
+        this.reservar_desmarcar_assento(a1, 0, 0);
         
     }//GEN-LAST:event_a1MouseClicked
 
     
     //Assento A2 (1)
     private void a2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a2MouseClicked
-        this.reservar_desmarcar_assento(a2, 0, 0, 1); 
+        this.reservar_desmarcar_assento(a2, 0, 1); 
     }//GEN-LAST:event_a2MouseClicked
 
     
     //Assento A3 (2)
     private void a3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a3MouseClicked
-        this.reservar_desmarcar_assento(a3, 2, 0, 2); 
+        this.reservar_desmarcar_assento(a3, 0, 2); 
     }//GEN-LAST:event_a3MouseClicked
 
     
     //Assento A4 (3)
     private void a4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a4MouseClicked
-        this.reservar_desmarcar_assento(a4, 3, 0, 3); 
+        this.reservar_desmarcar_assento(a4, 0, 3); 
     }//GEN-LAST:event_a4MouseClicked
 
     
     //Assento A5 (4)
     private void a5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_a5MouseClicked
-        this.reservar_desmarcar_assento(a5, 4, 0, 4); 
+        this.reservar_desmarcar_assento(a5, 0, 4); 
     }//GEN-LAST:event_a5MouseClicked
 
     
     //Assento B1 (5)
     private void b1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b1MouseClicked
-        this.reservar_desmarcar_assento(b1, 5, 1, 0); 
+        this.reservar_desmarcar_assento(b1, 1, 0); 
     }//GEN-LAST:event_b1MouseClicked
     
     
     //Assento B2 (6)
     private void b2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b2MouseClicked
-        this.reservar_desmarcar_assento(b2, 6, 1, 1); 
+        this.reservar_desmarcar_assento(b2, 1, 1); 
     }//GEN-LAST:event_b2MouseClicked
     
     
     //Assento B3 (7)
     private void b3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b3MouseClicked
-        this.reservar_desmarcar_assento(b3, 7, 1, 2); 
+        this.reservar_desmarcar_assento(b3, 1, 2); 
     }//GEN-LAST:event_b3MouseClicked
     
     
     //Assento B4 (8)
     private void b4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b4MouseClicked
-        this.reservar_desmarcar_assento(b4, 8, 1, 3); 
+        this.reservar_desmarcar_assento(b4, 1, 3); 
     }//GEN-LAST:event_b4MouseClicked
     
     
     //Assento B5 (9)
     private void b5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b5MouseClicked
-        this.reservar_desmarcar_assento(b5, 9, 1, 4); 
+        this.reservar_desmarcar_assento(b5, 1, 4); 
     }//GEN-LAST:event_b5MouseClicked
     
     
     //Assento C1 (10)
     private void c1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c1MouseClicked
-        this.reservar_desmarcar_assento(c1, 10, 2, 0); 
+        this.reservar_desmarcar_assento(c1, 2, 0); 
     }//GEN-LAST:event_c1MouseClicked
     
     
     //Assento C2 (11)
     private void c2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c2MouseClicked
-        this.reservar_desmarcar_assento(c2, 11, 2, 1); 
+        this.reservar_desmarcar_assento(c2, 2, 1); 
     }//GEN-LAST:event_c2MouseClicked
     
     
     //Assento C3 (12)
     private void c3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c3MouseClicked
-        this.reservar_desmarcar_assento(c3, 12, 2, 2); 
+        this.reservar_desmarcar_assento(c3, 2, 2); 
     }//GEN-LAST:event_c3MouseClicked
     
     
     //Assento C4 (13)
     private void c4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c4MouseClicked
-        this.reservar_desmarcar_assento(c4, 13, 2, 3); 
+        this.reservar_desmarcar_assento(c4, 2, 3); 
     }//GEN-LAST:event_c4MouseClicked
     
     
     //Assento C5 (14)
     private void c5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_c5MouseClicked
-        this.reservar_desmarcar_assento(c5, 14, 2, 4); 
+        this.reservar_desmarcar_assento(c5, 2, 4); 
     }//GEN-LAST:event_c5MouseClicked
 
     
     //Assento D1
     private void d1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d1MouseClicked
-        this.reservar_desmarcar_assento(d1, 15, 3, 0); 
+        this.reservar_desmarcar_assento(d1, 3, 0); 
     }//GEN-LAST:event_d1MouseClicked
 
     
     //Assento D2
     private void d2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d2MouseClicked
-        this.reservar_desmarcar_assento(d2, 16, 3, 1); 
+        this.reservar_desmarcar_assento(d2, 3, 1); 
     }//GEN-LAST:event_d2MouseClicked
 
     
     //Assento D3
     private void d3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d3MouseClicked
-        this.reservar_desmarcar_assento(d3, 17, 3, 2); 
+        this.reservar_desmarcar_assento(d3, 3, 2); 
     }//GEN-LAST:event_d3MouseClicked
 
     
     //Assento D4
     private void d4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d4MouseClicked
-        this.reservar_desmarcar_assento(d4, 18, 3, 3); 
+        this.reservar_desmarcar_assento(d4, 3, 3); 
     }//GEN-LAST:event_d4MouseClicked
 
     
     //Assento D5
     private void d5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_d5MouseClicked
-        this.reservar_desmarcar_assento(d5, 19, 3, 4); 
+        this.reservar_desmarcar_assento(d5, 3, 4); 
     }//GEN-LAST:event_d5MouseClicked
 
     
