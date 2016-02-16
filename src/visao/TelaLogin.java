@@ -58,7 +58,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Acessar);
-        Acessar.setBounds(350, 160, 73, 23);
+        Acessar.setBounds(350, 160, 73, 29);
 
         Sair.setText("Sair");
         Sair.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +67,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Sair);
-        Sair.setBounds(430, 160, 70, 23);
+        Sair.setBounds(430, 160, 70, 29);
 
         jLabelFundoLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Fundo.jpg"))); // NOI18N
         getContentPane().add(jLabelFundoLogin);
