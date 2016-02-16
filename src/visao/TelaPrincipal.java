@@ -1,24 +1,13 @@
-
 package visao;
 
 import controle.Funcionario;
 import java.awt.event.ItemEvent;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 public class TelaPrincipal extends javax.swing.JFrame{
-    private Object Sessao1_Sala1,Sessao1_Sala2;
-    Funcionario dados = new Funcionario();// Instancia a classa Funcionario para usar a variavel que armazena o nome do Vendedor.
-    
-    //Metodo para retornar o valor do ComboBox.
-   
 
-    public Object getSessao1_Sala1(){
-        return Sessao1_Sala1;
-    }
-    public Object getSessao1_Sala2(){
-        return Sessao1_Sala2;
-    }
+    Funcionario dados = new Funcionario();// Instancia a classa Funcionario para usar a variavel que armazena o nome do Vendedor.
+
     
     public TelaPrincipal() { 
         initComponents();
@@ -27,11 +16,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         */
         // chama o metodo para pegar dados do cliente.
         dados.pedeDados();
-        NomeFuncionario.setText(dados.getNome());
-        //Deveria Retorna o valor dado ao comboBox atraves do getModel().getSelectedItem();
-        Sessao1_Sala1 = Sessao_O_Regresso.getModel().getSelectedItem().toString();
-       Sessao1_Sala2 = Tirando_O_Atraso.getModel().getSelectedItem().toString();
-        
+        NomeFuncionario.setText(dados.getNome());   
     }
     
     
@@ -55,8 +40,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
         DeadPoolLeg = new javax.swing.JLabel();
         ORegressoLeg = new javax.swing.JLabel();
         Snoopy = new javax.swing.JLabel();
-        Sessao_O_Regresso = new javax.swing.JComboBox<>();
-        Tirando_O_Atraso = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         NomeFuncionario = new javax.swing.JTextField();
         NomeVendedor = new javax.swing.JLabel();
@@ -66,6 +49,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         QuadradoInterno.setTitle("Bem Vindo");
         QuadradoInterno.setVisible(true);
@@ -159,26 +143,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         jPanelQuadradoInterno.add(Snoopy);
         Snoopy.setBounds(350, 370, 200, 40);
 
-        Sessao_O_Regresso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sessao", "13:30" }));
-        Sessao_O_Regresso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Sessao_O_RegressoActionPerformed(evt);
-            }
-        });
-        jPanelQuadradoInterno.add(Sessao_O_Regresso);
-        Sessao_O_Regresso.setBounds(70, 180, 110, 20);
-
-        Tirando_O_Atraso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20:30" }));
-        Tirando_O_Atraso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tirando_O_AtrasoActionPerformed(evt);
-            }
-        });
-        jPanelQuadradoInterno.add(Tirando_O_Atraso);
-        Tirando_O_Atraso.setBounds(236, 180, 90, 20);
-
         QuadradoInterno.getContentPane().add(jPanelQuadradoInterno);
-        jPanelQuadradoInterno.setBounds(0, 30, 670, 450);
+        jPanelQuadradoInterno.setBounds(0, 30, 680, 450);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel1.setText("Sistema de Emissão de Ingressos.");
@@ -208,8 +174,13 @@ public class TelaPrincipal extends javax.swing.JFrame{
         QuadradoInterno.getContentPane().add(NomeVendedor);
         NomeVendedor.setBounds(10, 0, 90, 30);
 
+        getContentPane().add(QuadradoInterno);
+        QuadradoInterno.setBounds(0, 0, 690, 510);
+
         FundoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo01.jpg"))); // NOI18N
         FundoPrincipal.setText("jLabel1");
+        getContentPane().add(FundoPrincipal);
+        FundoPrincipal.setBounds(686, 0, 0, 510);
 
         jMenu2.setText("Sair");
 
@@ -225,25 +196,7 @@ public class TelaPrincipal extends javax.swing.JFrame{
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(QuadradoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(FundoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 610, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(FundoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
-            .addComponent(QuadradoInterno)
-        );
-
-        setSize(new java.awt.Dimension(697, 570));
+        setSize(new java.awt.Dimension(708, 570));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,10 +245,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_Sala6_ORegressoLegActionPerformed
 
     private void NomeFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeFuncionarioActionPerformed
-        // Pega Nome
-        //Aqui nao ta exbindo o nome do Funcionario
-        
+        // Pega Nome do funcionario e exibe na Tela Principal.
         NomeFuncionario.setText(dados.getNome());
+        
     }//GEN-LAST:event_NomeFuncionarioActionPerformed
 
     private void NomeFuncionarioAncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_NomeFuncionarioAncestorRemoved
@@ -305,20 +257,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void NomeFuncionarioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_NomeFuncionarioAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeFuncionarioAncestorAdded
-
-    private void Sessao_O_RegressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sessao_O_RegressoActionPerformed
-
-        // Chama A Sala1Oregresso
-        Sala1_ORegresso ORegresso = new Sala1_ORegresso();
-        ORegresso.setVisible(true);
-        
-    }//GEN-LAST:event_Sessao_O_RegressoActionPerformed
-
-    private void Tirando_O_AtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tirando_O_AtrasoActionPerformed
-       //Instancia a Classe Tirando o Atraso
-       Sala2_TirandoOAtraso sala2 = new Sala2_TirandoOAtraso();
-       sala2.setVisible(true);
-    }//GEN-LAST:event_Tirando_O_AtrasoActionPerformed
     
     
     //Inicia o Método main desta classe
@@ -369,10 +307,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton Sala4_DeadPoolLeg;
     private javax.swing.JButton Sala5_Snoopy;
     private javax.swing.JButton Sala6_ORegressoLeg;
-    private javax.swing.JComboBox<String> Sessao_O_Regresso;
     private javax.swing.JLabel Snoopy;
     private javax.swing.JLabel TirandoOAtraso;
-    private javax.swing.JComboBox<String> Tirando_O_Atraso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

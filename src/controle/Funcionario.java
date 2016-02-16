@@ -3,13 +3,12 @@ package controle;
 import javax.swing.JOptionPane;
 
 public class Funcionario {
-    private String nome, CPF;
-    int Qt_ingressos_Vendidos;
+    private String nome;
     
     //Método para pedir dados do vendedor devido sistema nao possuir cadastro de funcionario.
     public void pedeDados(){
         
-        //vou fazer o tratamento aqui mesmo @jamelly
+        //Tratamento de Excessao para este Método.
         boolean sentinela = false;
         while(sentinela == false){
             this.nome = JOptionPane.showInputDialog("Entre com seu nome");
@@ -21,6 +20,7 @@ public class Funcionario {
                 for(int i=0;i<array.length;i++){
                     sentinela = !Character.isDigit(array[i]);
                 }
+           
             }
         }
         
@@ -36,14 +36,8 @@ public class Funcionario {
     }
     
     //metodos set
-    public void setCPF(String cpf){
-        this.CPF = cpf;
-    }
+    
     public void setNome(String Nome){
         this.nome = Nome;
-    }
-    public static void main(String args[]){
-        Funcionario jamelly = new Funcionario();
-        jamelly.pedeDados();
     }
 }

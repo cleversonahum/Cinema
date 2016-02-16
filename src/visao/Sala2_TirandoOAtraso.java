@@ -18,7 +18,7 @@ public class Sala2_TirandoOAtraso extends Sala_Cinema{
     @Override
     public void info_cliente(){
         TelaPrincipal novoComboBox = new TelaPrincipal();
-        Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+getFilme()+" - "+"\nSessao: "+novoComboBox.getSessao1_Sala2()+"\nCliente: "+super.getNomeCliente()+
+        int Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+getFilme()+" - "+"\nCliente: "+super.getNomeCliente()+
             "\nTelefone Para Contato: "+getTelefoneCliente()+"\nEmail: "+getEmailCliente()+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");

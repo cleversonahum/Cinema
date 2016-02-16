@@ -16,7 +16,7 @@ public class Sala3_DeadPoolDub extends Sala_Cinema{
     }
 
     public void info_cliente(){
-        Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+getFilme()+" - "+"\nSessao: "+Sessao+"\nCliente: "+super.getNomeCliente()+
+        int Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+getFilme()+" - "+"\nCliente: "+super.getNomeCliente()+
             "\nTelefone Para Contato: "+getTelefoneCliente()+"\nEmail: "+getEmailCliente()+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");

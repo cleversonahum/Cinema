@@ -2,28 +2,15 @@ package visao;
 import controle.Cliente;
 import controle.Funcionario;
 import java.awt.Color;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author cleversonahum
- */
 public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
-    
-    //Antiga Classe Cinema
-    Object Sessao ;
-    int Verifica;
+
     private String nomeCliente,Email,telefoneCliente;
     private String filme;
     private int sessao, num_fileiras=4, num_cadeiras_fileira=5, assentos_disponiveis = 20, total_assentos;
-  
-    
-    
-    
+
     //Construtor da classe Sala_Cinema
     Sala_Cinema(String filme, int sessao) {
         this.filme = filme;
@@ -34,10 +21,6 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     //Métodos Set
     public void setFilme(String filme) { //definir filme
         this.filme = filme;
-    }
-    
-    public void setSessao(int sessao) { //definir Sessao
-        this.sessao = sessao;
     }
     
     public void setNumFileiras(int num_fileiras) { //Definir numero de fileiras
@@ -61,10 +44,6 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     //Metodos Get
     public String getFilme(){ //Acessar filme
         return this.filme;
-    }
-    
-    public int getSessao() {
-        return this.sessao;
     }
     
     public int getNumFileiras() {
@@ -180,7 +159,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
             x.setBackground(Color.red);//Deixa a cadeira indisponivel (vermelho)
             //Pede Informações do Cliente ao Solicitar assento.
             //Chama o método pegaDadosCliente Para Solicitar seus Dados.
-            pegaDadosCliene();
+            pegaDadosCliente();
             //exibe informanções
             info_cliente();
             this.reservar_assento(num_fila,num_fila_assento); //reserva o assento escolhido
@@ -194,24 +173,25 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
             cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));  
     }
     }
-    // Implementando O Método pegaDadosCliente.
+    //Implementandi O Metodo da Classe Interface Cliente.
     @Override
-    public void pegaDadosCliene() {
+    public void pegaDadosCliente() {
+        //Tratamento de excessao
+        try{
         do{
-        nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: ");
+        nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: "); 
         }while((nomeCliente==null||nomeCliente.equals("")));
         Email= JOptionPane.showInputDialog("Informe o Email do Cliente: ");
         telefoneCliente = JOptionPane.showInputDialog("Informe um Telefone Para Contato: ");
-        
+        }catch(NumberFormatException e){// caso ocorra algum erro no tipo de dado escrito
+            e.printStackTrace();//impre todos os erros encontrados e as linhas aonde estão o erro.
+        }
     }
     //Fim da Implementação do Método pegaDadosCliente.
     
     //Exibe as Informações para verificar se está tudo correto
     public void info_cliente(){
-        //Intancia a Classe Tela principal para pegar o que foi armazenado na variavel valor.
-        TelaPrincipal novoComboBox = new TelaPrincipal();        
-
-        Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nSessao: "+novoComboBox.getSessao1_Sala1()+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
+        int Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+this.filme+" - "+"\nCliente: "+nomeCliente+"\nTelefone Para Contato: "+telefoneCliente+
             "\nEmail: "+Email+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
                 JOptionPane.showMessageDialog(null, "Ingresso Emitido com Sucesso.");
@@ -462,7 +442,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         d2.setEditable(false);
         d2.setBackground(java.awt.Color.green);
         d2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        d2.setText("D1");
+        d2.setText("D2");
         d2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         d2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -473,7 +453,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         d3.setEditable(false);
         d3.setBackground(java.awt.Color.green);
         d3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        d3.setText("D1");
+        d3.setText("D3");
         d3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         d3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -484,7 +464,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         d4.setEditable(false);
         d4.setBackground(java.awt.Color.green);
         d4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        d4.setText("D1");
+        d4.setText("D4");
         d4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         d4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -495,7 +475,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         d5.setEditable(false);
         d5.setBackground(java.awt.Color.green);
         d5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        d5.setText("D1");
+        d5.setText("D5");
         d5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         d5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -804,7 +784,5 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    // End of variables declaration//GEN-END:variables
-
-    
+    // End of variables declaration//GEN-END:variables  
 }
