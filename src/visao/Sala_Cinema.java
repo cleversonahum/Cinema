@@ -153,7 +153,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
             //Atualizando valores das caixas de texto na Interface
             cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
             cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
-            cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));
+            //cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));
 
         }
         else {
@@ -174,7 +174,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
                 //Atualizando valores das caixas de texto na Interface
                 cxTxtTotalLugares.setText(Integer.toString(this.total_assentos()));
                 cxTxtLugaresReservados.setText(Integer.toString(this.quant_pessoas_sala()));
-                cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));  
+                //cxTxtLugaresDisponiveis.setText(Integer.toString(this.getAssentosDisponiveis()));  
             }
         }
     }
@@ -224,10 +224,10 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         
         a1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        //jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cxTxtTotalLugares = new javax.swing.JTextField();
-        cxTxtLugaresDisponiveis = new javax.swing.JTextField();
+        //cxTxtLugaresDisponiveis = new javax.swing.JTextField();
         cxTxtLugaresReservados = new javax.swing.JTextField();
         a2 = new javax.swing.JTextField();
         a3 = new javax.swing.JTextField();
@@ -265,7 +265,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
 
         jLabel1.setText("Total de Lugares : ");
 
-        jLabel2.setText("Lugares Disponíveis : ");
+        //jLabel2.setText("Lugares Disponíveis : ");
 
         jLabel3.setText("Lugares Reservados : ");
 
@@ -273,9 +273,9 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
         cxTxtTotalLugares.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cxTxtTotalLugares.setText("20");
 
-        cxTxtLugaresDisponiveis.setEditable(false);
-        cxTxtLugaresDisponiveis.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        cxTxtLugaresDisponiveis.setText("20");
+        //cxTxtLugaresDisponiveis.setEditable(false);
+        //cxTxtLugaresDisponiveis.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        //cxTxtLugaresDisponiveis.setText("20");
 
         cxTxtLugaresReservados.setEditable(false);
         cxTxtLugaresReservados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -499,13 +499,13 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            //.addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cxTxtTotalLugares, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                            .addComponent(cxTxtLugaresDisponiveis, javax.swing.GroupLayout.Alignment.LEADING)
+                            //.addComponent(cxTxtLugaresDisponiveis, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cxTxtLugaresReservados, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
@@ -594,14 +594,14 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
                     .addComponent(cxTxtTotalLugares, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cxTxtLugaresDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    //.addComponent(jLabel2)
+                   //.addComponent(cxTxtLugaresDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                //.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cxTxtLugaresReservados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
-        );
+        ));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -780,7 +780,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     private javax.swing.JTextField c3;
     private javax.swing.JTextField c4;
     private javax.swing.JTextField c5;
-    public static javax.swing.JTextField cxTxtLugaresDisponiveis;
+    //public static javax.swing.JTextField cxTxtLugaresDisponiveis;
     javax.swing.JTextField cxTxtLugaresReservados;
     javax.swing.JTextField cxTxtTotalLugares;
     private javax.swing.JTextField d1;
@@ -789,7 +789,7 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     private javax.swing.JTextField d4;
     private javax.swing.JTextField d5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    //private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables  
 }

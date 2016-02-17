@@ -7,7 +7,14 @@ import javax.swing.JOptionPane;
 public class TelaPrincipal extends javax.swing.JFrame{
 
     Funcionario dados = new Funcionario();// Instancia a classa Funcionario para usar a variavel que armazena o nome do Vendedor.
-
+    
+    //Instanciando as Salas do Cinema
+    Sala1_ORegresso O_Regresso = new Sala1_ORegresso();
+    Sala2_TirandoOAtraso tirando_o_atraso = new Sala2_TirandoOAtraso();
+    Sala3_DeadPoolDub deadPoolDb = new Sala3_DeadPoolDub();
+    Sala4_DeadPoolLeg deadPollLeg = new Sala4_DeadPoolLeg();
+    Sala5_Snoopy snoopy = new Sala5_Snoopy();
+    Sala6_ORegressoLeg oregressoleg = new Sala6_ORegressoLeg();
     
     public TelaPrincipal() { 
         initComponents();
@@ -16,7 +23,8 @@ public class TelaPrincipal extends javax.swing.JFrame{
         */
         // chama o metodo para pegar dados do cliente.
         dados.pedeDados();
-        NomeFuncionario.setText(dados.getNome());   
+        NomeFuncionario.setText(dados.getNome());
+        
     }
     
     
@@ -203,7 +211,6 @@ public class TelaPrincipal extends javax.swing.JFrame{
     private void Sala1_ORegressoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala1_ORegressoActionPerformed
         
     // chama a tela do filme O Regresso
-        Sala1_ORegresso O_Regresso = new Sala1_ORegresso();
         O_Regresso.setVisible(true);  
     }//GEN-LAST:event_Sala1_ORegressoActionPerformed
 
@@ -213,34 +220,29 @@ public class TelaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void Sala2_TirandoOAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala2_TirandoOAtrasoActionPerformed
-        //Instancia o Jframe Sala2_TirandoOAtraso e torna a sua tela visivel ao usuario.
-        Sala2_TirandoOAtraso tirando_o_atraso = new Sala2_TirandoOAtraso();
+        //torna a sua tela visivel ao usuario.
         tirando_o_atraso.setVisible(true);
         
         
     }//GEN-LAST:event_Sala2_TirandoOAtrasoActionPerformed
 
     private void Sala3_DeadPoolDubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala3_DeadPoolDubActionPerformed
-        // Intância e chama a tela da Sala3_DeadPoolDub.
-        Sala3_DeadPoolDub deadPoolDb = new Sala3_DeadPoolDub();
+        //chama a tela da Sala3_DeadPoolDub.
             deadPoolDb.setVisible(true);
     }//GEN-LAST:event_Sala3_DeadPoolDubActionPerformed
 
     private void Sala4_DeadPoolLegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala4_DeadPoolLegActionPerformed
-        // Intância e chama a tela da Sala4_DeadPoolLeg.
-        Sala4_DeadPoolLeg deadPollLeg = new Sala4_DeadPoolLeg();
+        //chama a tela da Sala4_DeadPoolLeg.
         deadPollLeg.setVisible(true);
     }//GEN-LAST:event_Sala4_DeadPoolLegActionPerformed
 
     private void Sala5_SnoopyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala5_SnoopyActionPerformed
-        // Intância e chama a tela da Sala5_Snoopy.
-        Sala5_Snoopy snoopy = new Sala5_Snoopy();
+        //chama a tela da Sala5_Snoopy.
         snoopy.setVisible(true);
     }//GEN-LAST:event_Sala5_SnoopyActionPerformed
 
     private void Sala6_ORegressoLegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Sala6_ORegressoLegActionPerformed
-        // // Intância e chama a tela da Sala6_ORegressoLeg.
-        Sala6_ORegressoLeg oregressoleg = new Sala6_ORegressoLeg();
+        //chama a tela da Sala6_ORegressoLeg.
         oregressoleg.setVisible(true);
     }//GEN-LAST:event_Sala6_ORegressoLegActionPerformed
 

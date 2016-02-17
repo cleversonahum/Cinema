@@ -1,7 +1,6 @@
 
 package visao;
 
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -19,8 +18,6 @@ public class Sala1_ORegresso extends Sala_Cinema{
     
     @Override
     public boolean info_cliente(){
-        //Intancia a Classe Tela principal para pegar o que foi armazenado na variavel valor.
-        TelaPrincipal novoComboBox = new TelaPrincipal();
         int Verifica = JOptionPane.showConfirmDialog(null, "Filme = "+getFilme()+" - "+"\nCliente: "+super.getNomeCliente()+
             "\nTelefone Para Contato: "+getTelefoneCliente()+"\nEmail: "+getEmailCliente()+"\nDeseja Emitir Este Ingresso ? ");
             if(Verifica == JOptionPane.YES_OPTION){
