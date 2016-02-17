@@ -29,10 +29,7 @@ public class Funcionario {
            
             }
         }
-//        do{
-//        this.nome = JOptionPane.showInputDialog("Vendedor, Informe seu nome: ");
-//        }while(this.nome.equals("")||this.nome==null);
-//       
+
     }
     //Métodos Get dessa classe.
     

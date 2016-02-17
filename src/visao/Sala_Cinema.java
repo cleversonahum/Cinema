@@ -182,15 +182,37 @@ public class Sala_Cinema extends javax.swing.JFrame implements Cliente{
     @Override
     public void pegaDadosCliente() {
         //Tratamento de excessao
-        try{
-        do{
-        nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: "); 
-        }while((nomeCliente==null||nomeCliente.equals("")));
+        boolean sentinela = false;
+        while(sentinela == false){
+            nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: ");
+            if(nomeCliente==null || "".equals(nomeCliente)){
+                sentinela =false;
+            }
+            else{
+                char[] nome = nomeCliente.toCharArray();
+                for(int i=0;i<nome.length;i++){
+                    if(Character.isDigit(nome[i])==true){
+                        sentinela =false;
+                        break;
+                    }
+                    else{
+                        sentinela =true;
+                    }
+                }
+            }
+        }
+        
         Email= JOptionPane.showInputDialog("Informe o Email do Cliente: ");
         telefoneCliente = JOptionPane.showInputDialog("Informe um Telefone Para Contato: ");
-        }catch(NumberFormatException e){// caso ocorra algum erro no tipo de dado escrito
-            e.printStackTrace();//impre todos os erros encontrados e as linhas aonde estão o erro.
-        }
+//        try{
+//        do{
+//        nomeCliente = JOptionPane.showInputDialog("Informe o Nome do Cliente: "); 
+//        }while((nomeCliente==null||nomeCliente.equals("")));
+//        Email= JOptionPane.showInputDialog("Informe o Email do Cliente: ");
+//        telefoneCliente = JOptionPane.showInputDialog("Informe um Telefone Para Contato: ");
+//        }catch(NumberFormatException e){// caso ocorra algum erro no tipo de dado escrito
+//            e.printStackTrace();//impre todos os erros encontrados e as linhas aonde estão o erro.
+//        }
     }
     //Fim da Implementação do Método pegaDadosCliente.
     

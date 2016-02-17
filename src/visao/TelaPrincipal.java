@@ -21,9 +21,9 @@ public class TelaPrincipal extends javax.swing.JFrame{
         /* Chama o método para conectar ao banco de dados
         conecta.conect();
         */
-        // chama o metodo para pegar dados do cliente.
+        // chama o metodo para pegar dados do funcionário.
         dados.pedeDados();
-        NomeFuncionario.setText(dados.getNome());
+        NomeFuncionario.setText(dados.getNome()); //Usado na interface gráfica
         
     }
     
